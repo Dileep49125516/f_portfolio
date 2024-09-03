@@ -1,17 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import UploadProject from './UploadProject';
 import { API_URL } from './data/apipath';
 
-
 const secret = import.meta.env.VITE_SECRET_KEY;
-
 
 const Projects = ({ setShowHeader }) => {
   const [showProjects, setShowProjects] = useState(false);
   const [viewProjects, setViewProjects] = useState([]);
   const navigate = useNavigate();
-  
+  const location = useLocation();
 
   const projectHandler = async () => {
     try {
@@ -40,15 +38,13 @@ const Projects = ({ setShowHeader }) => {
 
   useEffect(() => {
     projectHandler();
-    if (window.location.pathname !== '/projects') {
+    if (location.pathname !== '/projects') {
       setShowProjects(false);
     }
-  }, [window.location.pathname]);
+  }, [location.pathname]);
 
   const deleteProjectById = async (projectId) => {
     const isConfirmed = window.prompt("Enter your password:");
-
-
     if (isConfirmed !==`${secret}`) {
       return alert("Incorrect Password");
     }
@@ -87,59 +83,58 @@ const Projects = ({ setShowHeader }) => {
           </svg>
         </button>
       </div>
-        <div className="tableData">
-          {viewProjects.length === 0 ? (
-            <p>No projects uploaded</p>
-          ) : (
-            <table className="tableProject">
-              <thead>
-                <tr>
-                  <th>Project Title</th>
-                  <th>Technical Skills</th>
-                  <th>Description</th>
-                  <th>URL</th>
-                  <th>Image</th>
-                  <th>Delete</th>
-                </tr>
-              </thead>
-              <tbody>
-                {viewProjects.map((item) => (
-                  <tr key={item._id}>
-                    <td>{item.title}</td>
-                    <td><p>{item.technicalSkills}</p></td>
-                    <td><span>{item.description}</span></td>
-                    <td><a href={item.link} target="_blank" rel="noopener noreferrer">{item.link}</a></td>
-                    <td>
-                      {item.image && (
-                        <img
-                          src={`${API_URL}${item.image}`}
-                          alt={item.title}
-                          style={{ width: "100px", height: "100px" }}
-                        />
-                      )}
-                    </td>
-                    <td className="btnSubmit">
-                      <button onClick={() => deleteProjectById(item._id)}>Delete</button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          )}
-        </div>
-
-       <div className="displayUpload"> 
-      <button onClick={toggleProjects} className="arrow">
-        <h3>Upload projects here</h3>
-        {showProjects ? (
-          <svg xmlns="http://www.w3.org/2000/svg" height="58px" viewBox="0 -960 960 960" width="58px" fill="#EA3323"><path d="M480-554 283-357l-43-43 240-240 240 240-43 43-197-197Z"/></svg>
-        
+      <div className="tableData">
+        {viewProjects.length === 0 ? (
+          <p>No projects uploaded</p>
         ) : (
-          <svg xmlns="http://www.w3.org/2000/svg" height="58px" viewBox="0 -960 960 960" width="58px" fill="#EA3323"><path d="M480-344 240-584l43-43 197 197 197-197 43 43-240 240Z"/></svg>
+          <table className="tableProject">
+            <thead>
+              <tr>
+                <th>Project Title</th>
+                <th>Technical Skills</th>
+                <th>Description</th>
+                <th>URL</th>
+                <th>Image</th>
+                <th>Delete</th>
+              </tr>
+            </thead>
+            <tbody>
+              {viewProjects.map((item) => (
+                <tr key={item._id}>
+                  <td>{item.title}</td>
+                  <td><p>{item.technicalSkills}</p></td>
+                  <td><span>{item.description}</span></td>
+                  <td><a href={item.link} target="_blank" rel="noopener noreferrer">{item.link}</a></td>
+                  <td>
+                    {item.image && (
+                      <img
+                        src={`${API_URL}${item.image}`}
+                        alt={item.title}
+                        style={{ width: "100px", height: "100px" }}
+                      />
+                    )}
+                  </td>
+                  <td className="btnSubmit">
+                    <button onClick={() => deleteProjectById(item._id)}>Delete</button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         )}
-      </button>
-      {showProjects && <UploadProject setShowProjects={setShowProjects} setShowHeader={setShowHeader}/>}
-    </div>
+      </div>
+
+      <div className="displayUpload"> 
+        <button onClick={toggleProjects} className="arrow">
+          <h3>Upload projects here</h3>
+          {showProjects ? (
+            <svg xmlns="http://www.w3.org/2000/svg" height="58px" viewBox="0 -960 960 960" width="58px" fill="#EA3323"><path d="M480-554 283-357l-43-43 240-240 240 240-43 43-197-197Z"/></svg>
+          ) : (
+            <svg xmlns="http://www.w3.org/2000/svg" height="58px" viewBox="0 -960 960 960" width="58px" fill="#EA3323"><path d="M480-344 240-584l43-43 197 197 197-197 43 43-240 240Z"/></svg>
+          )}
+        </button>
+        {showProjects && <UploadProject setShowProjects={setShowProjects} setShowHeader={setShowHeader}/>}
+      </div>
     </div>   
   );
 };
