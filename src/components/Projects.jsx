@@ -38,7 +38,7 @@ const Projects = ({ setShowHeader }) => {
 
   useEffect(() => {
     projectHandler();
-    if (location.pathname !== '/projects') {
+    if (location.pathname !== '/Projects') {
       setShowProjects(false);
     }
   }, [location.pathname]);
