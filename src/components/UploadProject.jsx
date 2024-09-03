@@ -26,10 +26,7 @@ const UploadProject = ({ setShowProjects,setShowHeader}) => {
         method: "POST",
         body: formData,
       });
-  
-      const contentType = response.headers.get("Content-Type");
-      if (contentType && contentType.includes("application/json")) {
-        const data = await response.json();
+      const data = await response.json();
         if (response.ok) {
           setTitle("");
           setDescription("");
@@ -43,14 +40,11 @@ const UploadProject = ({ setShowProjects,setShowHeader}) => {
         } else {
           alert(`Upload failed: ${data.message}`);
         }
-      } else {
-        const text = await response.text(); 
-        alert(`Upload failed: ${text}`);
-      }
-    } catch (error) {
+       } catch (error) {
       console.error("Error uploading project:", error);
       alert("Upload failed");
     }
+  
   };
   
 
