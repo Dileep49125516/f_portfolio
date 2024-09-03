@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import {API_URL} from "./data/path.js";
-
+const API_URL = import.meta.env.VITE_API_URL;
 const UploadProject = ({ setShowProjects,setShowHeader}) => {
   const [title, setTitle] = useState("");
   const [technicalSkills, setTechnicalSkills] = useState("");

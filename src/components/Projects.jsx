@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import UploadProject from './UploadProject';
-import {API_URL} from "./data/path.js";
+const API_URL = import.meta.env.VITE_API_URL;
 
 
 const secret = import.meta.env.VITE_SECRET_KEY;
