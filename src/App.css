@@ -353,6 +353,13 @@ td button{
   border-radius: 10px;
   border: red;
 }
+.page{
+  background-color: white;
+  color: red;
+  max-width: 30%;
+  margin: 250px;
+  margin-left: 390px;
+}
 
 
 /*responsive*/
