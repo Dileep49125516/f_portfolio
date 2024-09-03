@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import {API_URL} from "../data/path.js";
+import {API_URL} from "./data/path.js";
 
 const UploadProject = ({ setShowProjects,setShowHeader}) => {
   const [title, setTitle] = useState("");

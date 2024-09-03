@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import UploadProject from './UploadProject';
-import {API_URL,secret} from "../data/path.js";
+import {API_URL} from "./data/path.js";
+
+
+const secret = import.meta.env.VITE_SECRET_KEY;
+
 
 const Projects = ({ setShowHeader }) => {
   const [showProjects, setShowProjects] = useState(false);
@@ -43,6 +47,7 @@ const Projects = ({ setShowHeader }) => {
 
   const deleteProjectById = async (projectId) => {
     const isConfirmed = window.prompt("Enter your password:");
+
 
     if (isConfirmed !==`${secret}`) {
       return alert("Incorrect Password");
