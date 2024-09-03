@@ -38,8 +38,9 @@ const Projects = ({ setShowHeader }) => {
 
   useEffect(() => {
     projectHandler();
-    if (location.pathname !== '/Projects') {
+    if (location.pathname !== '/projects') {
       setShowProjects(false);
+      
     }
   }, [location.pathname]);
 
@@ -85,7 +86,7 @@ const Projects = ({ setShowHeader }) => {
       </div>
       <div className="tableData">
         {viewProjects.length === 0 ? (
-          <p>No projects uploaded</p>
+          <h2>No projects uploaded</h2>
         ) : (
           <table className="tableProject">
             <thead>

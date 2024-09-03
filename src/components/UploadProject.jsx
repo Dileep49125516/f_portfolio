@@ -13,39 +13,46 @@ const UploadProject = ({ setShowProjects,setShowHeader}) => {
 
   const handleUploadProject = async (e) => {
     e.preventDefault();
-
+  
     const formData = new FormData();
     formData.append("title", title);
     formData.append("technicalSkills", technicalSkills);
     formData.append("description", description);
     formData.append("link", link);
     formData.append("image", image);
-
+  
     try {
       const response = await fetch(`${API_URL}/api/projects/put-details`, {
         method: "POST",
         body: formData,
       });
-
-      if (response.ok) {
-        setTitle("");
-        setDescription("");
-        setTechnicalSkills("");
-        setLink("");
-        setImage(null);
-        setShowProjects(true);
-        setShowHeader(false);
-        navigate('/projects');
-        alert("Project uploaded successfully");
-      } else {
+  
+      const contentType = response.headers.get("Content-Type");
+      if (contentType && contentType.includes("application/json")) {
         const data = await response.json();
-        alert(`Upload failed: ${data.message}`);
+        if (response.ok) {
+          setTitle("");
+          setDescription("");
+          setTechnicalSkills("");
+          setLink("");
+          setImage(null);
+          setShowProjects(true);
+          setShowHeader(false);
+          navigate('/projects');
+          alert("Project uploaded successfully");
+        } else {
+          alert(`Upload failed: ${data.message}`);
+        }
+      } else {
+        const text = await response.text(); 
+        alert(`Upload failed: ${text}`);
       }
     } catch (error) {
       console.error("Error uploading project:", error);
       alert("Upload failed");
     }
   };
+  
 
   return (
     <div>

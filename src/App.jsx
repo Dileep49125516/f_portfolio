@@ -4,7 +4,6 @@ import Header from './components/Header';
 import AboutMe from './components/AboutMe';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
-import PageNotFound from './components/PageNotFound';
 import "./App.css";
 
 function App() {
@@ -19,7 +18,6 @@ function App() {
         <Route path="/about" element={<AboutMe setShowHeader={setShowHeader} />} />
         <Route path="/projects" element={<Projects setShowHeader={setShowHeader} />} />
         <Route path="/contact" element={<Contact setShowHeader={setShowHeader} />} />
-        <Route path="/*" element={<PageNotFound/>}/>
       </Routes>
     </Router>
   );
