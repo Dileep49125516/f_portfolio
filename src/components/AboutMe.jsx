@@ -14,7 +14,7 @@ const AboutMe = ({ setShowHeader }) => {
       <div className="aboutMeContent">
         <ul>
           <li className="l0"><pre><h2>Name</h2>
-                Dileep Kumar Burla
+               Burla Dileep Kumar 
                 </pre>
             </li>
           <li className="l1">
@@ -32,9 +32,9 @@ const AboutMe = ({ setShowHeader }) => {
       
             <h2>Skills</h2>
             <h5>Languages:</h5> C, Java, JavaScript, SQL, Bash, TypeScript<br/>
-            <h5>Frameworks:</h5> Node.js, Express.js, Next.js<br/>
-            <h5>Tools:</h5> Kubernetes, Docker, Git, PostgreSQL, MySQL<br/>
-            <h5>Platforms:</h5> Web, Windows, AWS<br/>
+            <h5>Frameworks:</h5> React.js,Node.js, Express.js, Next.js<br/>
+            <h5>Tools:</h5>Docker, Git, PostgreSQL, MySQL<br/>
+            <h5>Platforms:</h5> Web, Windows<br/>
             <h5>Soft Skills:</h5> Leadership, Event Management, Writing, Public Speaking, Time Management<br/>
             <h5>Technical Skills:</h5> Data Structures and Algorithms (DSA)<br/>
            
@@ -43,14 +43,13 @@ const AboutMe = ({ setShowHeader }) => {
             
             <h2>Certifications</h2>
             <h5>Leadership Skills:</h5> Learned and developed essential leadership qualities and strategies.<br/>
-            <h5>Mathematics for Computer Science:</h5> Acquired knowledge in mathematical concepts essential <br/>
-                                                            for computer science.<br/>
-            <h5>Computer Architecture:</h5> Gained a deep understanding of computer architecture, including <br/>
-                                                    processors, memory, and system design.<br/>
-            <h5>Introduction to Hardware and Operating Systems:</h5> Learned the basics of computer hardware<br/>
-                                                               components and operating system functionality.<br/>
-            <h5>Full Stack Web Development:</h5> Completed a comprehensive 0-100 full stack web development <br/>
-                                                     course at 100xDevs by Harikirat Singh.
+            <h5>EduSkills:</h5> EduSkills Full Stack Certification validates proficiency in full-stack web development, covering frontend,  <br/>
+                                  backend, databases, and deployment<br/>
+            <h5>Full Stack Web Development:</h5> Completed a comprehensive 0-100 full stack web development course at 100xDevs by Harikirat Singh.<br/>
+            <h5>Participation in Hackathons:</h5>Actively participated in a college hackathon, collaborating with a team to design and develop innovative solutions<br/>
+                 under time constraints,enhancing problem-solving and teamwork skills.<br/>
+                              
+                                                                                   
            
            </li>
            <li className="l4">
